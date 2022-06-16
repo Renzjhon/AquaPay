@@ -30,6 +30,7 @@
  
 
 <?php
+    
 if (isset($_SESSION['gcCart'])){
   if (@count($_SESSION['gcCart'])>0) {
     $cart = '<span class="carttxtactive">('.@count($_SESSION['gcCart']) .')</span>';
@@ -115,7 +116,7 @@ if (isset($_SESSION['gcCart'])){
             </div>
             <div class="mainmenu pull-left">
               <ul class="nav navbar-nav collapse navbar-collapse">
-                <li><a href="<?php echo web_root;?>" class="active">Home</a></li>
+                <li><a href="<?php echo web_root;?>">Home</a></li>
                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                        <?php 

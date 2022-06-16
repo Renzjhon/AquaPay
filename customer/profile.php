@@ -1,8 +1,8 @@
 <?php  
- 
        if (!isset($_SESSION['CUSID'])){
       redirect("index.php");
      }
+
 
 
      // if($_SESSION['fixnmixConfiremd']>0){
@@ -27,7 +27,7 @@
         <div class="panel">
             <div class="panel-body">
                 <a data-target="#myModal" data-toggle="modal" href=
-                ""><img class="img-hover" src="<?php echo web_root. "customer/".$res->CUSPHOTO; ?>"
+                ""><img class="img-hover" src="<?php echo web_root. "customer/customer_image/".$res->CUSPHOTO; ?>"
                 style="width:100%; height:100%;text-align:center" title=
                 "profile image"></a>
             </div>
@@ -148,7 +148,7 @@
                         </div><!--/table-resp-->
                     </div><!--/tab-pane-->
                     <div class="tab-pane" id="settings">
-                        <?php include  "signup.php" ?>
+                        <?php include  "edit_account.php" ?>
                     </div><!--/tab-pane-->
                       <div class="tab-pane" id="wishlist">
                         <?php include  "wishlist.php" ?>
