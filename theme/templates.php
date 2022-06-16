@@ -130,6 +130,13 @@ if (isset($_SESSION['gcCart'])){
          
                 <li><a href="<?php web_root?>index.php?q=product">Products</a></li>
                 <li><a href="<?php web_root?>index.php?q=contact">Contact</a></li>
+                <?php if (isset($_SESSION['CUSID'] )) { ?> 
+                <li><a href="<?php web_root?>index.php?q=profile">My Account</a></li>
+                <?php } else{ ?>
+                <li><a data-target="#smyModal" data-toggle="modal">My Account</a></li>
+                
+                <?php }?>
+
               </ul>
             </div>
           </div>

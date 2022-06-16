@@ -53,7 +53,7 @@ if(isset($_POST['sidebarLogin'])){
         if ($cusres==true){
 
            if($_POST['proid']==''){
-            redirect(web_root."index.php?q=orderdetails");
+            redirect(web_root."index.php?q=profile");
            }else{
               $proid = $_POST['proid'];
               $id = mysql_insert_id(); 
