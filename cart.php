@@ -94,7 +94,7 @@ check_message();
                                       
                                         <input type="hidden"    id ="TOT<?php echo $result->PROID;  ?>" name="TOT<?php echo $result->PROID; ?>" value="<?php echo  $result->PRODISPRICE ; ?>" >
                                    
-                                     <td> &#8369 <output id="Osubtot<?php echo $result->PROID ?>"><?php echo   $_SESSION['gcCart'][$i]['price'] ; ?></output></td>
+                                     <td>₱<output id="Osubtot<?php echo $result->PROID ?>"><?php echo   $_SESSION['gcCart'][$i]['price'] ; ?></output></td>
                                 </tr>
          
                             <?php  
@@ -129,11 +129,11 @@ check_message();
      <?php    
   
                      $countcart =isset($_SESSION['gcCart'])? count($_SESSION['gcCart']) : "0";
-                   if ($countcart > 0){
+                   if ($countcart >= 1){
   
                   if (isset($_SESSION['CUSID'])){  
                
-                    echo '<button type="submit"  name="proceed" id="proceed" class="btn btn-default check_out btn-pup pull-right">
+                    echo '<button type="submit"  name="proceed" id="proceed" class="btn btn-default check_out btn-pup pull-right" >
                             Proceed And Checkout
                             <i class="fa  fa-arrow-right fa-fw"></i>
                             </button>';
