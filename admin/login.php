@@ -11,7 +11,7 @@ require_once("../include/initialize.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login | Janobe </title>
+	<title>Login | Admin </title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -35,16 +35,16 @@ require_once("../include/initialize.php");
 </head>
 <body>
 	<div class="limiter" >
-		<div class="container-login100" style="background-image: url('images/img-01.jpg');">
+		<div class="container-login100" "background-color:white">
 
 			<div class="wrap-login100">
 				<form method="post" action=""  class="login100-form validate-form" >
 					<div class="login100-form-avatar">
-						<img src="../images/home/logo_banner.png" alt="AVATAR">
+						<img src="../images/logofullblack.png" alt="AVATAR">
 					</div>
 
 					<span class="login100-form-title p-t-20 p-b-45">
-						Pherce Mini-Hardware Admin Login
+						AquaPay Admin Login
 					</span>
 
 				 	<?php echo check_message(); ?>
