@@ -14,9 +14,13 @@ $view = (isset($_GET['q']) && $_GET['q'] != '') ? $_GET['q'] : '';
 switch ($view) {
  
 
-	case 'product' :
-        $title="Products";	
-		$content='menu.php';		
+	case 'aquapay' :
+        $title="Aquapay";	
+		$content='aquapay.php';		
+		break;
+    case 'about' :
+        $title="about";	
+		$content='about.php';		
 		break;
  	case 'cart' :
         $title="Cart List";	
@@ -202,8 +206,8 @@ if (isset($_SESSION['gcCart'])){
             <div class="mainmenu pull-left">
               <ul class="nav navbar-nav collapse navbar-collapse">
                 <li><a href="<?php echo web_root;?>">Home</a></li>
-                <li><a href="<?php echo web_root;?>">About</a></li>
-                <li><a href="<?php web_root?>index.php?q=product">Aquapay</a></li>
+                <li><a href="<?php echo web_root;?>index.php?q=about">About</a></li>
+                <li><a href="<?php web_root?>index.php?q=aquapay">Aquapay</a></li>
                 <li><a href="<?php web_root?>index.php?q=contact">Contact</a></li>
                 <?php if (isset($_SESSION['CUSID'] )) { ?> 
                 <li><a href="<?php web_root?>index.php?q=profile">My Account</a></li>
