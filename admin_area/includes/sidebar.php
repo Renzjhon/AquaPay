@@ -51,9 +51,9 @@
                    
                     <a href="index.php?view_products">    <!--a start-->
                         
-                        <i class="fa fa-fw fa-envelope"></i> Products
+                        <i class="fa fa-fw fa-envelope"></i> Bills
                         
-                        <span class="badge"><?php echo $count_products; ?></span>
+                        <span class="badge"><?php echo $count_bill; ?></span>
                         
                     </a>    <!--a end-->
                 
@@ -73,9 +73,9 @@
                    
                     <a href="index.php?view_cats">    <!--a start-->
                         
-                        <i class="fa fa-fw fa-gear"></i> Product Categories
+                        <i class="fa fa-fw fa-gear"></i> Complaints
                         
-                        <span class="badge"><?php echo $count_p_categories; ?></span>
+                        <span class="badge"><?php echo $count_complain; ?></span>
                         
                     </a>    <!--a end-->
                 
@@ -112,7 +112,7 @@
             <li>    <!--li start-->
                 <a href="#" data-toggle="collapse" data-target="#p_cat">    <!--a start-->
                         
-                        <i class="fa fa-fw fa-edit"></i> Product Categories
+                        <i class="fa fa-fw fa-users"></i> Customers
                         <i class="fa fa-fw fa-caret-down"></i>
                         
                     </a>    <!--a end-->
@@ -120,16 +120,64 @@
                     <ul id="p_cat" class="collapse">    <!--collapse start-->
                        
                         <li>    <!--li start-->
-                            <a href="index.php?insert_p_cat"> Add Product Category </a>
+                            <a href="index.php?insert_p_cat"> Add Customers </a>
                         </li>    <!--li end-->
                         <li>     <!--li start-->
-                            <a href="index.php?view_p_cats"> View Product Categories </a>
+                            <a href="index.php?view_p_cats"> View Customers </a>
                         </li>    <!--li end-->
                         
                     </ul>    <!--collapse end-->
                     
             </li>    <!--li end-->
-           
+            <li>    <!--li start-->
+                <a href="#" data-toggle="collapse" data-target="#supplier">    <!--a start-->
+                        
+                        <i class="fa fa-fw fa-envelope"></i> Bills
+                        <i class="fa fa-fw fa-caret-down"></i>
+                        
+                    </a>    <!--a end-->
+                    
+                    <ul id="supplier" class="collapse">    <!--collapse start-->
+                       
+                        <li>    <!--li start-->
+                            <a href="index.php?insert_supplier"> Add Bills </a>
+                        </li>    <!--li end-->
+                        <li>     <!--li start--> 
+                            <a href="index.php?view_suppliers"> View Bills </a>
+                        </li>    <!--li end-->
+                        
+                    </ul>    <!--collapse end-->
+            </li>    <!--li end-->
+            
+             <li>    <!--li start-->
+                <a href="index.php?view_customers">    <!--a href start-->
+                    <i class="fa fa-fw fa-book"></i>    Complaints
+                </a>    <!--a href end-->
+            </li>    <!--li end-->
+             <li>    <!--li start-->
+                <a href="index.php?view_customers">    <!--a href start-->
+                    <i class="fa fa-fw fa-users"></i>   Transactions
+                </a>    <!--a href end-->
+            </li>    <!--li end-->
+            <li>    <!--li start-->
+                <a href="#" data-toggle="collapse" data-target="#admins">    <!--a start-->
+                        
+                        <i class="fa fa-fw fa-users"></i> Admins
+                        <i class="fa fa-fw fa-caret-down"></i>
+                        
+                    </a>    <!--a end-->
+                    
+                    <ul id="admins" class="collapse">    <!--collapse start-->
+                       
+                        <li>    <!--li start-->
+                            <a href="index.php?insert_supplier"> Add Admins </a>
+                        </li>    <!--li end-->
+                        <li>     <!--li start--> 
+                            <a href="index.php?view_suppliers"> View Admins </a>
+                        </li>    <!--li end-->
+                        
+                    </ul>    <!--collapse end-->
+            </li>    <!--li end-->
             
             <li>    <!--li start-->
                 <a href="logout.php">    <!--a href start-->

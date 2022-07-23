@@ -33,6 +33,32 @@ include("includes/db.php");
         
         $admin_job = $row_admin['admin_job'];
         
+        
+     
+        
+        
+        $get_customers = "select * from customer";
+        
+        $run_customers = mysqli_query($con,$get_customers);
+        
+        $count_customers = mysqli_num_rows($run_customers);
+        
+        $get_bill = "select * from bill";
+        
+        $run_bill = mysqli_query($con,$get_bill);
+        
+        $count_bill = mysqli_num_rows($run_bill);
+        
+       $get_complain = "select * from complain";
+        
+        $run_complain = mysqli_query($con,$get_complain);
+        
+        $count_complain = mysqli_num_rows($run_complain);
+        
+       
+        
+       
+        
        
 ?>
 
@@ -43,9 +69,9 @@ include("includes/db.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MJJ Online Store Admin Panel</title>
+    <title>Aquapay Admin Panel</title>
     <link rel="stylesheet" href="css/bootstrap-337.min.css">
-    <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../font-awsome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/select2.min.css" />
     

@@ -43,15 +43,16 @@
                    
                     <div class="col-xs-3">    <!--col-xs-3 start-->
                        
-                        <i class="fa fa-tasks fa-5x"></i>
+                        <i class="fa fa-envelope fa-5x"></i>
                         
                     </div>    <!--col-xs-3 end-->
                     
                    <div class="col-xs-9 text-right">    <!--col-xs-9 text-right start-->
-                       
-                        <div class="huge"> <?php echo $count_products; ?> </div>    <!--huge end-->    
+                         
+                        <div class="huge"> <?php echo $count_bill; ?> </div>    <!--huge end-->    
+
                            
-                            <div> Products </div>
+                            <div> Bills </div>
                             
                     </div>    <!--col-xs-9 text-right end-->
                     
@@ -147,15 +148,15 @@
                    
                     <div class="col-xs-3">    <!--col-xs-3 start-->
                        
-                        <i class="fa fa-tags fa-5x"></i>
+                        <i class="fa fa-book fa-5x"></i>
                     
                     </div>    <!--col-xs-3 end-->
                     
                     <div class="col-xs-9 text-right">    <!--col-xs-9 text-right start-->
                        
-                        <div class="huge"> <?php echo $count_p_categories; ?> </div>    <!--huge end-->    
+                        <div class="huge"> <?php echo $count_complain; ?> </div>    <!--huge end-->    
                            
-                            <div> Product Categories </div>
+                            <div> Complaints </div>
                             
                     </div>    <!--col-xs-9 text-right end-->
                     
@@ -189,9 +190,9 @@
         
     </div>    <!--col-lg-3 col-md-6 end-->
     
-    <div class="col-lg-3 col-md-6">    <!--col-lg-3 col-md-6 start-->
+   <div class="col-lg-3 col-md-6">    <!--col-lg-3 col-md-6 start-->
        
-        <div class="panel panel-red">    <!--panel panel-red start-->
+        <div class="panel panel-red">    <!--panel panel-yellow start-->
            
             <div class="panel-heading">    <!--panel-heading start-->
                
@@ -199,41 +200,15 @@
                    
                     <div class="col-xs-3">    <!--col-xs-3 start-->
                        
-                        <i class="fa fa-shopping-cart fa-5x"></i>
+                        <i class="fa fa-list fa-5x"></i>
                     
                     </div>    <!--col-xs-3 end-->
                     
-                    <?php 
-                            
-                                $i=0;
-        
-                                $get_q = "select * from order_summary";
-                            
-                                $run_q = mysqli_query($con,$get_q);
-        
-                                while($row_q=mysqli_fetch_array($run_q)){
-                                    
-                                    $order_status = $row_q['order_status'];
-                                    
-                                    $cancel = $row_q['cancel'];
-                                    
-                                    $review = $row_q['review'];
-                                    
-                                   if($order_status != 'On Transit' && $cancel == "NotCancel" && $review == "Reviewed"){
-                                    
-                                    
-                                    $i++;
-                                    }
-                                }
-                            ?>
-                    
                     <div class="col-xs-9 text-right">    <!--col-xs-9 text-right start-->
                        
-                        <div class="huge">  <?php if($i <= 0){} else {?>
-                    <div class="huge"> <?php echo $i; ?> </div>    <!--huge end-->  
-                    <?php }?> </div>    <!--huge end-->    
+                        <div class="huge"> <?php echo $count_complain; ?> </div>    <!--huge end-->    
                            
-                            <div> Orders </div>
+                            <div> Transaction </div>
                             
                     </div>    <!--col-xs-9 text-right end-->
                     
@@ -241,7 +216,7 @@
                 
             </div>    <!--panel-heading end-->
             
-            <a href="index.php?view_orders">    <!--a start-->
+            <a href="index.php?view_p_cats">    <!--a start-->
                
                 <div class="panel-footer">    <!--panel-footer start-->
                    
@@ -263,11 +238,9 @@
                 
             </a>    <!--a end-->
             
-        </div>    <!--panel panel-red end-->
+        </div>    <!--panel panel-green end-->
         
     </div>    <!--col-lg-3 col-md-6 end-->
-    
-</div>    <!--row start-->
 
 <div class="row">    <!--row start-->
     <div class="col-lg-8">    <!--col-lg-start-->
@@ -275,7 +248,7 @@
             <div class="panel-heading">    <!--panel-heading start-->
                 <h3 class="panel-title">    <!--panel-title start-->
                     
-                    <i class="fa fa-money fa-fw"></i> New Orders
+                    <i class="fa fa-money fa-fw"></i> New Transactions
                     
                 </h3>    <!--panel-title end-->
             </div>    <!--panel-heading end-->
@@ -304,32 +277,17 @@
                             
                                 $i=0;
                         
-                                $get_order = "select * from order_summary order by 1 DESC LIMIT 0,5";
+                                $get_order = "select * from bill order by 1 DESC LIMIT 0,5";
                         
                                 $run_order = mysqli_query($con,$get_order);
          
                                 while($row_order=mysqli_fetch_array($run_order)){
                                     
-                                    $order_id = $row_order['order_id'];
+                                    $order_id = $row_order['bill_id'];
                                     
                                     $c_id = $row_order['customer_id'];
                                     
-                                    $invoice_no = $row_order['invoice_no']; 
-                                    
-                                    
-                                    
-                                    $order_status = $row_order['order_status'];
-                                    
-                                    $review = $row_order['review'];
-                                    
-                                    $cancel = $row_order['cancel'];
-                                    
-                                    
-                                     if($cancel == "NotCancel" && $review == "Reviewed"){
-                                    
-                                    
-                                    
-                                    $i++;
+                                  
                             
                             ?>
                            
@@ -367,7 +325,7 @@
                                 <td><?php echo $order_status;?></td>
                             </tr>    <!--tr end-->
                            
-                           <?php }} ?>
+                           <?php }?>
                            
                         </tbody>    <!--tbody end-->
                         
@@ -378,7 +336,7 @@
                     
                     <a href="index.php?view_orders">    <!--a start-->
                         
-                        View All Orders <i class="fa fa-arrow-circle-right"></i>
+                        View All Transactions <i class="fa fa-arrow-circle-right"></i>
                         
                     </a>    <!--a end-->
                     
@@ -410,19 +368,12 @@
                 <div class="mb-md">    <!--mb-md start-->
                     <div class="widget-content-expanded">    <!--widget-content-expanded start-->
                         <i class="fa fa-user"></i>    <span> Email: </span> <?php echo $admin_email; ?> <br>
-                        <i class="fa fa-flag"></i>    <span> Country: </span> <?php echo $admin_country; ?> <br>
                         <i class="fa fa-envelope"></i>    <span> Contact: </span> <?php echo $admin_contact; ?> <br>
                     </div>    <!--widget-content-expanded end-->
                     
                     <hr class="dotted short" style="margin:10px 0 10px 0;">
                     
-                    <h5 class="text-muted"> About Me </h5>
                     
-                    <p>    <!--p start-->
-                        
-                        <?php echo $admin_about; ?>
-                        
-                    </p>    <!--p end-->
                     
                 </div>    <!--mb-md end-->
 
