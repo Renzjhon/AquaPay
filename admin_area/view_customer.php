@@ -13,7 +13,7 @@
         <ol class="breadcrumb">    <!--breadcrumb start-->
             <li class="active">    <!--li start-->
                 
-                <i class="fa fa-dashboard"></i> Dashboard / Complaints
+                <i class="fa fa-dashboard"></i> Dashboard / View Customers
                 
             </li>    <!--li end-->
         </ol>    <!--breadcrumb end-->
@@ -26,22 +26,26 @@
             <div class="panel-heading">    <!--panel-heading start-->
                 <h3 class="panel-title">    <!--panel-title start-->
                     
-                    <i class="fa fa-book"></i> View Complaints
+                    <i class="fa fa-users"></i> View Customers
                     
                 </h3>    <!--panel-title end-->
             </div>    <!--panel-heading end--><br>
-<!--<center><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search customers.." title="Type in a name"></center>-->
+<center><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search customers.." title="Type in a name"></center>
             
             <div class="panel-body">    <!--panel-body start-->
                 <div class="table-responsive">    <!--table-responsive start-->
-<!--                    <p><button onclick="sortTable()">Sort Alphabetically</button></p>-->
+                    <p><button onclick="sortTable()">Sort Alphabetically</button></p>
                     <table class="table table-striped table-bordered table-hover" id="myTable">    <!--table table-striped table-bordered table-hover start-->
                         
                         <thead>    <!--thead start-->
                             <tr>    <!--tr start-->
-                                <th> Complaint ID No: </th>
-                                <th> Complaint Reason: </th>
-                                <th> Status: </th>
+                                <th> Customer_ID: </th>
+                                <th> Customer Name: </th>
+                                <th> Image: </th>
+                                <th> User Name: </th>
+                                <th> Customer Phone: </th>
+                                <th> Customer Email: </th>
+                                <th> Customer Address: </th>
 <!--                                <th> Delete: </th>-->
                             </tr>    <!--tr end-->
                         </thead>    <!--thead end-->
@@ -52,18 +56,25 @@
                                 
                                 $i=0;
          
-                                $get_b = "select * from complain";
+                                $get_c = "select * from customer";
          
-                                $run_b = mysqli_query($con,$get_b);
+                                $run_c = mysqli_query($con,$get_c);
          
-                                while($row_b=mysqli_fetch_array($run_b)){
+                                while($row_c=mysqli_fetch_array($run_c)){
                                     
-                                    $complain_id = $row_b['complain_id'];
+                                    $c_id = $row_c['customer_id'];
                                     
-                                    $complain_reason = $row_b['complaint_reason'];
+                                    $f_name = $row_c['f_name'];
+                                    $l_name = $row_c['l_name'];
+                                    $u_name = $row_c['u_name'];
                                     
-                                    $status = $row_b['status'];
-                                
+                                    $c_img = $row_c['c_image'];
+                                    
+                                    $c_email = $row_c['c_email'];
+                                    
+                                    $c_address = $row_c['c_address'];
+                                    
+                                    $c_contact = $row_c['c_phone'];
                                     
                                     $i++;
                                     
@@ -72,9 +83,13 @@
                             ?>
                             
                             <tr>    <!--tr start-->
-                                <td> <?php echo $complain_id; ?> </td>
-                                <td> <?php echo $complain_reason; ?> </td>
-                                <td> <?php echo $status; ?> </td>
+                                <td> <?php echo $c_id; ?> </td>
+                                <td> <?php echo $f_name; ?> <?php echo $l_name; ?> </td>
+                                <td> <img src="../customer/customer_image/<?php echo $c_img; ?>" width="60" height="60"> </td>
+                                <td> <?php echo $u_name; ?> </td>
+                                <td> <?php echo $c_contact; ?> </td>
+                                <td> <?php echo $c_email; ?> </td>
+                                <td> <?php echo $c_address; ?> </td>
 <!--
                                 <td> 
                                     <a href="index.php?delete_customer=<?php echo $c_id; ?>">

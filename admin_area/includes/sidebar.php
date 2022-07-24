@@ -109,54 +109,32 @@
                     </a>    <!--a end-->
             </li>    <!--li end-->
             
-            <li>    <!--li start-->
-                <a href="#" data-toggle="collapse" data-target="#p_cat">    <!--a start-->
-                        
-                        <i class="fa fa-fw fa-users"></i> Customers
-                        <i class="fa fa-fw fa-caret-down"></i>
-                        
-                    </a>    <!--a end-->
-                    
-                    <ul id="p_cat" class="collapse">    <!--collapse start-->
-                       
-                        <li>    <!--li start-->
-                            <a href="index.php?insert_p_cat"> Add Customers </a>
-                        </li>    <!--li end-->
-                        <li>     <!--li start-->
-                            <a href="index.php?view_p_cats"> View Customers </a>
-                        </li>    <!--li end-->
-                        
-                    </ul>    <!--collapse end-->
-                    
-            </li>    <!--li end-->
-            <li>    <!--li start-->
-                <a href="#" data-toggle="collapse" data-target="#supplier">    <!--a start-->
-                        
-                        <i class="fa fa-fw fa-envelope"></i> Bills
-                        <i class="fa fa-fw fa-caret-down"></i>
-                        
-                    </a>    <!--a end-->
-                    
-                    <ul id="supplier" class="collapse">    <!--collapse start-->
-                       
-                        <li>    <!--li start-->
-                            <a href="index.php?insert_supplier"> Add Bills </a>
-                        </li>    <!--li end-->
-                        <li>     <!--li start--> 
-                            <a href="index.php?view_suppliers"> View Bills </a>
-                        </li>    <!--li end-->
-                        
-                    </ul>    <!--collapse end-->
-            </li>    <!--li end-->
             
              <li>    <!--li start-->
                 <a href="index.php?view_customers">    <!--a href start-->
+                    <i class="fa fa-fw fa-users"></i>    Customers
+                </a>    <!--a href end-->
+            </li>    <!--li end-->
+            <li>    <!--li start-->
+                <a href="index.php?view_bills">    <!--a href start-->
+                    <i class="fa fa-fw fa-envelope"></i>    Bills
+                </a>    <!--a href end-->
+            </li>    <!--li end-->
+            
+            
+             <li>    <!--li start-->
+                <a href="index.php?complain">    <!--a href start-->
                     <i class="fa fa-fw fa-book"></i>    Complaints
                 </a>    <!--a href end-->
             </li>    <!--li end-->
              <li>    <!--li start-->
-                <a href="index.php?view_customers">    <!--a href start-->
-                    <i class="fa fa-fw fa-users"></i>   Transactions
+                <a href="index.php?view_transaction">    <!--a href start-->
+                    <i class="fa fa-fw fa-calendar"></i>   Transactions
+                </a>    <!--a href end-->
+            </li>    <!--li end-->
+             <li>    <!--li start-->
+                <a href="index.php?send_message">    <!--a href start-->
+                    <i class="fa fa-fw fa-calendar"></i>   Send Message
                 </a>    <!--a href end-->
             </li>    <!--li end-->
             <li>    <!--li start-->
@@ -170,10 +148,10 @@
                     <ul id="admins" class="collapse">    <!--collapse start-->
                        
                         <li>    <!--li start-->
-                            <a href="index.php?insert_supplier"> Add Admins </a>
+                            <a href="index.php?add_admins"> Add Admins </a>
                         </li>    <!--li end-->
                         <li>     <!--li start--> 
-                            <a href="index.php?view_suppliers"> View Admins </a>
+                            <a href="index.php?view_admins"> View Admins </a>
                         </li>    <!--li end-->
                         
                     </ul>    <!--collapse end-->

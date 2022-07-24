@@ -13,7 +13,7 @@
         <ol class="breadcrumb">    <!--breadcrumb start-->
             <li class="active">    <!--li start-->
                 
-                <i class="fa fa-dashboard"></i> Dashboard / Complaints
+                <i class="fa fa-dashboard"></i> Dashboard / View Bills
                 
             </li>    <!--li end-->
         </ol>    <!--breadcrumb end-->
@@ -26,7 +26,7 @@
             <div class="panel-heading">    <!--panel-heading start-->
                 <h3 class="panel-title">    <!--panel-title start-->
                     
-                    <i class="fa fa-book"></i> View Complaints
+                    <i class="fa fa-envelope"></i> View Bills
                     
                 </h3>    <!--panel-title end-->
             </div>    <!--panel-heading end--><br>
@@ -39,8 +39,12 @@
                         
                         <thead>    <!--thead start-->
                             <tr>    <!--tr start-->
-                                <th> Complaint ID No: </th>
-                                <th> Complaint Reason: </th>
+                                <th> Bill ID No: </th>
+                                <th> Bill Date: </th>
+                                <th> Units Consumed </th>
+                                <th> Customer User Name: </th>
+                                <th> Amount: </th>
+                                <th> Due Date </th>
                                 <th> Status: </th>
 <!--                                <th> Delete: </th>-->
                             </tr>    <!--tr end-->
@@ -52,18 +56,36 @@
                                 
                                 $i=0;
          
-                                $get_b = "select * from complain";
+                                $get_b = "select * from bill";
          
                                 $run_b = mysqli_query($con,$get_b);
          
                                 while($row_b=mysqli_fetch_array($run_b)){
                                     
-                                    $complain_id = $row_b['complain_id'];
+                                    $bill_id = $row_b['bill_id'];
                                     
-                                    $complain_reason = $row_b['complaint_reason'];
+                                    $customer_id = $row_b['customer_id'];
                                     
+                                    $units = $row_b['units'];
+                                    $amount = $row_b['amount'];
                                     $status = $row_b['status'];
-                                
+                                    
+                                    $bdate = $row_b['bdate'];
+                                    
+                                    $bdate = date('F j, Y', strtotime($bdate));
+                                    
+                                    $ddate = $row_b['ddate'];
+                                    
+                                    $ddate = date('F j, Y', strtotime($ddate));
+                                    
+                                $get_c = "select * from customer where customer_id = $customer_id";
+         
+                                $run_c = mysqli_query($con,$get_c);
+         
+                                while($row_c=mysqli_fetch_array($run_c)){
+                                    
+                                    $u_name = $row_c['u_name'];
+                                    
                                     
                                     $i++;
                                     
@@ -72,8 +94,12 @@
                             ?>
                             
                             <tr>    <!--tr start-->
-                                <td> <?php echo $complain_id; ?> </td>
-                                <td> <?php echo $complain_reason; ?> </td>
+                                <td> <?php echo $bill_id; ?> </td>
+                                <td> <?php echo $bdate; ?> </td>
+                                <td> <?php echo $units; ?></td>
+                                <td> <?php echo $u_name; ?></td>
+                                <td> <?php echo $amount; ?> </td>
+                                <td> <?php echo $ddate; ?> </td>
                                 <td> <?php echo $status; ?> </td>
 <!--
                                 <td> 
@@ -87,7 +113,7 @@
                                  
                             </tr>    <!--tr end-->
                             
-                            <?php } ?>
+                            <?php }} ?>
                             
                         </tbody>    <!--tbody end-->
                         

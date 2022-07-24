@@ -261,10 +261,9 @@
                           
                           <tr>    <!--th start-->
                            
-                                <th> Order No: </th>
-                                <th> Customer Email: </th>
-                                <th> Invoice No: </th>
-                                <th> </th>
+                                <th> Transaction ID: </th>
+                                <th> Payable: </th>
+                                <th> Pay Date </th>
                                 <th> Status: </th>
                             
                            </tr>    <!--th end-->
@@ -277,52 +276,31 @@
                             
                                 $i=0;
                         
-                                $get_order = "select * from bill order by 1 DESC LIMIT 0,5";
+                                $get_transaction = "select * from transaction order by 1 DESC LIMIT 0,5";
                         
-                                $run_order = mysqli_query($con,$get_order);
+                                $run_transaction = mysqli_query($con,$get_transaction);
          
-                                while($row_order=mysqli_fetch_array($run_order)){
+                                while($row_transaction=mysqli_fetch_array($run_transaction)){
                                     
-                                    $order_id = $row_order['bill_id'];
+                                    $transaction_id = $row_transaction['transaction_id'];
                                     
-                                    $c_id = $row_order['customer_id'];
+                                    $payable = $row_transaction['payable'];     
+                                    $pdate = $row_transaction['pdate'];
+                                    $status = $row_transaction['status'];
+                                    $pdate = date('F j, Y', strtotime($pdate));
+
+
                                     
                                   
                             
                             ?>
                            
                             <tr>    <!--tr start-->
-                                <td> <?php echo $order_id; ?> </td>
-                                <td>
-                                    
-                                    <?php 
-                                    
-                                        $get_customer = "select * from customers where customer_id='$c_id'";
-                                    
-                                        $run_customer = mysqli_query($con,$get_customer);
-                                        
-                                        $row_customer = mysqli_fetch_array($run_customer);
-                                    
-                                        $customer_email = $row_customer['customer_email'];
-                                    
-                                        echo $customer_email;
-                                    
-                                    ?>
-                                    
-                                </td>
-                                <td> <?php echo $invoice_no; ?> </td>
-                                <td 
-                                <?php if($order_status == "On Delivery"){
-                                        
-                                        echo "bgcolor= 'red'";
-                                    }
-                                else{
-                                         echo "bgcolor= 'lightgreen'";
-                                }
-                                ?>
-                                > 
-                                </td>
-                                <td><?php echo $order_status;?></td>
+                                <td> <?php echo $transaction_id; ?> </td>
+                                
+                                <td> <?php echo $payable; ?> </td>
+                                <td> <?php echo $pdate; ?></td>
+                                <td><?php echo $status;?></td>
                             </tr>    <!--tr end-->
                            
                            <?php }?>

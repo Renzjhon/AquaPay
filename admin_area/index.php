@@ -95,6 +95,34 @@ include("includes/db.php");
                     
                     include("complain.php");
                 }
+                if(isset($_GET['view_customers'])){
+                    
+                    include("view_customer.php");
+                }
+                if(isset($_GET['view_bills'])){
+                    
+                    include("view_bills.php");
+                }
+                if(isset($_GET['view_transaction'])){
+                    
+                    include("view_transaction.php");
+                }
+                if(isset($_GET['view_admins'])){
+                    
+                    include("view_admins.php");
+                }
+                if(isset($_GET['add_admins'])){
+                    
+                    include("add_admins.php");
+                }
+                if(isset($_GET['edit_admin'])){
+                    
+                    include("edit_admin.php");
+                }
+                if(isset($_GET['send_message'])){
+                    
+                    include("send_message.php");
+                }
                 ?>
                 
             </div>    <!--container-fluid end-->

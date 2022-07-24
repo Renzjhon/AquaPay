@@ -13,7 +13,7 @@
         <ol class="breadcrumb">    <!--breadcrumb start-->
             <li class="active">    <!--li start-->
                 
-                <i class="fa fa-dashboard"></i> Dashboard / Complaints
+                <i class="fa fa-dashboard"></i> Dashboard / View Transactions
                 
             </li>    <!--li end-->
         </ol>    <!--breadcrumb end-->
@@ -26,21 +26,26 @@
             <div class="panel-heading">    <!--panel-heading start-->
                 <h3 class="panel-title">    <!--panel-title start-->
                     
-                    <i class="fa fa-book"></i> View Complaints
+                    <i class="fa fa-calendar"></i> View Transactions
                     
                 </h3>    <!--panel-title end-->
             </div>    <!--panel-heading end--><br>
-<!--<center><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search customers.." title="Type in a name"></center>-->
+<center><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search customers.." title="Type in a name"></center>
             
             <div class="panel-body">    <!--panel-body start-->
                 <div class="table-responsive">    <!--table-responsive start-->
-<!--                    <p><button onclick="sortTable()">Sort Alphabetically</button></p>-->
+                    <p><button onclick="sortTable()">Sort Alphabetically</button></p>
                     <table class="table table-striped table-bordered table-hover" id="myTable">    <!--table table-striped table-bordered table-hover start-->
                         
                         <thead>    <!--thead start-->
                             <tr>    <!--tr start-->
-                                <th> Complaint ID No: </th>
-                                <th> Complaint Reason: </th>
+                                <th> Transaction ID: </th>
+                                <th> Customer UserName: </th>
+                                <th> Bill Date: </th>
+                                <th> Amount: </th>
+                                <th> Dues(if any)? </th>
+                                <th> Final Amount </th>
+                                <th> Transaction Date </th>
                                 <th> Status: </th>
 <!--                                <th> Delete: </th>-->
                             </tr>    <!--tr end-->
@@ -52,18 +57,31 @@
                                 
                                 $i=0;
          
-                                $get_b = "select * from complain";
+                                $get_b = "select * from transaction";
          
                                 $run_b = mysqli_query($con,$get_b);
          
                                 while($row_b=mysqli_fetch_array($run_b)){
                                     
-                                    $complain_id = $row_b['complain_id'];
+                                    $transaction_id = $row_b['transaction_id'];
                                     
-                                    $complain_reason = $row_b['complaint_reason'];
+                                    $customer_id = $row_b['customer_id'];
                                     
+                                    $payable = $row_b['payable'];
+                                    $pdate = $row_b['pdate'];
                                     $status = $row_b['status'];
-                                
+                                    
+                                    $pdate = date('F j, Y', strtotime($pdate));
+                                    
+                                    
+                                $get_c = "select * from customer where customer_id = $customer_id";
+         
+                                $run_c = mysqli_query($con,$get_c);
+         
+                                while($row_c=mysqli_fetch_array($run_c)){
+                                    
+                                    $u_name = $row_c['u_name'];
+                                    
                                     
                                     $i++;
                                     
@@ -72,8 +90,13 @@
                             ?>
                             
                             <tr>    <!--tr start-->
-                                <td> <?php echo $complain_id; ?> </td>
-                                <td> <?php echo $complain_reason; ?> </td>
+                                <td> <?php echo $transaction_id; ?> </td>
+                                <td> <?php echo $u_name; ?> </td>
+                                <td> <?php echo $pdate; ?> </td>
+                                <td> <?php echo $payable; ?></td>
+                                <td> </td>
+                                <td> <?php echo $payable; ?> </td>
+                                <td> <?php echo $pdate; ?> </td>
                                 <td> <?php echo $status; ?> </td>
 <!--
                                 <td> 
@@ -87,7 +110,7 @@
                                  
                             </tr>    <!--tr end-->
                             
-                            <?php } ?>
+                            <?php }} ?>
                             
                         </tbody>    <!--tbody end-->
                         
