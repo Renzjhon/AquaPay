@@ -50,19 +50,16 @@ function doInsert(){
 
  
 						$customer = New Customer(); 
-						$customer->FNAME 			= $_POST['FNAME'];
-						$customer->LNAME 			= $_POST['LNAME']; 		
-//						$customer->CITYADD  		= $_POST['CITYADD'];	
-						$customer->PROVINCE  		= $_POST['province'];	
-						$customer->CITYADD  		= $_POST['c_city'];	
-						$customer->STREETADD  		= $_POST['c_address']; 
-						$customer->CUSPHOTO  		= $_FILES['c_image']['name'];
+						$customer->f_name 			= $_POST['f_name'];
+						$customer->l_name 			= $_POST['l_name']; 		
+						$customer->c_address  		= $_POST['c_address']; 
+						$customer->c_image  		= $_FILES['c_image']['name'];
 //						$customer->GENDER 			= $_POST['GENDER'];
-						$customer->EMAILADD 		= $_POST['EMAIL'];
-					 	$customer->PHONE 			= $_POST['PHONE']; 
-						$customer->CUSUNAME			= $_POST['CUSUNAME'];
-						$customer->CUSPASS			= sha1($_POST['CUSPASS']);	
-						$customer->DATEJOIN 		= date('Y-m-d h-i-s');
+						$customer->c_email 		= $_POST['EMAIL'];
+					 	$customer->c_phone 			= $_POST['PHONE']; 
+						$customer->u_name			= $_POST['CUSUNAME'];
+						$customer->c_pass			= sha1($_POST['CUSPASS']);	
+						$customer->Date_join 		= date('Y-m-d h-i-s');
 						$customer->TERMS 			= 1;
         
                         $c_image = $_FILES['c_image']['name'];
@@ -110,24 +107,26 @@ function doInsert(){
 			
 			$customer = New Customer();
 			// $customer->CUSTOMERID 		= $_POST['CUSTOMERID'];
-			$customer->FNAME 			= $_POST['FNAME'];
-			$customer->LNAME 			= $_POST['LNAME'];
+			$customer->f_name 			= $_POST['FNAME'];
+			$customer->l_name 			= $_POST['LNAME'];
 			// $customer->MNAME 			= $_POST['MNAME'];
 			// $customer->CUSHOMENUM 		= $_POST['CUSHOMENUM'];
 			// $customer->STREETADD		= $_POST['STREETADD'];
 			// $customer->BRGYADD 			= $_POST['BRGYADD'] ;			
-			$customer->CITYADD  		= $_POST['CITYADD'];
+			$customer->c_address  		= $_POST['CITYADD'];
 			// $customer->PROVINCE 		= $_POST['PROVINCE'];
 			// $customer->COUNTRY 			= $_POST['COUNTRY'];
-			$customer->GENDER 			= $_POST['GENDER'];
-		 	$customer->PHONE 			= $_POST['PHONE'];
+		 	$customer->c_phone 			= $_POST['PHONE'];
 			// $customer->ZIPCODE 			= $_POST['ZIPCODE']; 
-			$customer->CUSUNAME			= $_POST['CUSUNAME'];
+			$customer->u_name			= $_POST['CUSUNAME'];
 			// $customer->CUSPASS			= sha1($_POST['CUSPASS']);	
 			$customer->update($_SESSION['CUSID']);
 
 
 			message("Accounts has been updated!", "success");
+                          echo "<script>alert('Accounts has been updated!')</script>";
+
+            
 			redirect(web_root.'index.php?q=profile');
 		}
 	}

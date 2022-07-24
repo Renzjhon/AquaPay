@@ -27,15 +27,15 @@
         <div class="panel">
             <div class="panel-body">
                 <a data-target="#myModal" data-toggle="modal" href=
-                ""><img class="img-hover" src="<?php echo web_root. "customer/customer_image/".$res->CUSPHOTO; ?>"
+                ""><img class="img-hover" src="<?php echo web_root. "customer/customer_image/".$res->c_image; ?>"
                 style="width:100%; height:100%;text-align:center" title=
                 "profile image"></a>
             </div>
             <ul class="list-group">
             <!-- <li class="list-group-item text-muted">Profile</li> -->
                 <li class="list-group-item text-right"><span class=
-                "pull-left"><strong>Real name</strong></span>
-                <?php echo $res->FNAME .' '.$res->LNAME; ?></li>
+                "pull-left"><strong>Full name</strong></span>
+                <?php echo $res->f_name .' '.$res->l_name; ?></li>
                 <li class="list-group-item text-right"> 
                 <div class="panel-group" id="accordion">   
                   <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"  >Change Password</a>
@@ -57,17 +57,21 @@
             <div class="panel-body">
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active">
-                        <a data-toggle="tab" href="#home">List of Orders</a>
+                        <a data-toggle="tab" href="#home">Bills</a>
                     </li> 
                     <li>
                         <a data-toggle="tab" href="#settings">Update
                         Account</a>
                     </li>
                     <li>
-                        <a data-toggle="tab" href="#wishlist">WishList</a>
+                        <a data-toggle="tab" href="#transaction">Transaction</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#complain">Complain</a>
                     </li>
                 </ul>
                 <div class="tab-content">
+                   
                     <div class="tab-pane active" id="home">
                         <?php
                             check_message();
@@ -80,79 +84,184 @@
                                 <table cellspacing="0" class=
                                 "table table-striped table-bordered table-hover"
                                 id="example" style="font-size:12px">
+                                   
+                                    
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Order#</th>
-                                            <th>Date Oredered</th>
-                                            <th>TotalPrice</th>
-                                            <th>PaymentMethod</th>
+                                            <th>Bill ID</th>
+                                            <th>Units</th>
+                                            <th>Amount</th>
+                                            <th>Due Date</th>
                                             <th>Status</th>
-                                            <th width="150px">Remarks</th>
-                                            <th></th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
-                                                                    $query = "SELECT * FROM `tblsummary`  
-                                                                  WHERE  `CUSTOMERID`=".$_SESSION['CUSID'] ." ORDER BY   `ORDEREDNUM` desc ";
-                                                                  $mydb->setQuery($query);
-                                                                  $cur = $mydb->loadResultList();
-
-                                                                foreach ($cur as $result) {
-                                                                  ?>
+                
+                                        $get_bill = "select * from bill";
+        
+                                        $run_bill = mysqli_query($con,$get_bill);
+        
+                                        while($row_bill=mysqli_fetch_array($run_bill)){
+                            
+                                        $bill_id = $row_bill['bill_id'];
+                        
+                                        $units = $row_bill['units'];
+                        
+                                        $amount = $row_bill['amount'];
+                                        $status = $row_bill['status'];
+                                        $ddate = $row_bill['ddate']; 
+                                        $ddate = date('F j, Y', strtotime($ddate));
+                
+                ?>
                                         <tr>
-                                            <td width="5%"></td>
-                                            <!--   <td width="10%"  class="orderid   "  data-target="#myOrdered" data-toggle="modal" data-id="<?php echo  $result->ORDEREDNUM; ?>">
-                            <a href="#"  title="View list Of ordered products"  class="orderid   "  data-target="#myOrdered" data-toggle="modal" data-id="<?php echo  $result->ORDEREDNUM; ?>"><i class="fa fa-info-circle fa-fw"></i> view orders</a> 
-                         </td> -->
-                                            <!-- <td> <a href="#" class="get-id"  data-target="#myModal" data-toggle="modal" data-id="<?php echo  $result->ORDERNUMBER; ?>"><?php echo  $result->ORDERNUMBER; ?></a>
-                               </td> -->
-                                            <td>
-                                            <?php echo  $result->ORDEREDNUM; ?>
-                                            <!-- <a href="#"  title="View list Of ordered products"  class="orderid   "  data-target="#myOrdered" data-toggle="modal" data-id="<?php echo  $result->ORDEREDNUM; ?>"><i class="fa fa-info-circle fa-fw"></i><?php echo  $result->ORDEREDNUM; ?></a> --></td>
-                                            <td>
-                                            <?php echo date_format(date_create($result->ORDEREDDATE),"M/d/Y h:i:s") ; ?></td>
-                                            <td>&#8369
-                                            <?php echo  $result->PAYMENT; ?></td>
-                                            <td>
-                                            <?php echo  $result->PAYMENTMETHOD; ?></td>
-                                            <td>
-                                            <?php echo  $result->ORDEREDSTATS; ?></td>
-                                            <td>
-                                            <?php echo  $result->ORDEREDREMARKS; ?></td>
-                                            <td class="tooltip-demo">
-                                                <a class=
-                                                "orderid btn btn-pup btn-xs"
-                                                data-id=
-                                                "<?php echo $result->ORDEREDNUM; ?>"
-                                                data-target="#myOrdered"
-                                                data-toggle="modal" href="#"
-                                                title=
-                                                "View list Of ordered products">
-                                                <i class=
-                                                "fa fa-info-circle fa-fw"
-                                                data-placement="left"
-                                                data-toggle="tooltip" title=
-                                                "View Order"></i> <span class=
-                                                "tooltip tooltip.top">view</span></a>
+                                            <td><?php echo $bill_id?></td>                                      
+                                            <td><?php echo $units?></td>
+                                            <td><?php echo $amount?></td>
+                                            <td><?php echo $ddate?></td>                                         
+                                            <td><?php echo $status?></td>
                                             
-                                            </td>
-                                        </tr><?php
-                                                                       
-                                                                        } 
-                                                                        ?>
+
+
+                                           
+                                            
+                                         
+                                            
+                                        </tr>
+                                           <?php } ?>
                                     </tbody>
+                                 
                                 </table>
                             </form> 
                         </div><!--/table-resp-->
                     </div><!--/tab-pane-->
+                    
+                    
+                    
                     <div class="tab-pane" id="settings">
                         <?php include  "edit_account.php" ?>
                     </div><!--/tab-pane-->
-                      <div class="tab-pane" id="wishlist">
-                        <?php include  "wishlist.php" ?>
+                     
+                     
+                     
+<!--                     This is for transaction-->
+                     <div class="tab-pane" id="transaction">
+                        <?php
+                            check_message();
+                              
+                            ?>
+                        <div class="table-responsive" style="margin-top:5%;">
+                            <form action=
+                            "customer/controller.php?action=delete" method=
+                            "post">
+                                <table cellspacing="0" class=
+                                "table table-striped table-bordered table-hover"
+                                id="example" style="font-size:12px">
+                                   
+                                    <?php 
+                
+                                        $get_transaction = "select * from transaction";
+        
+                                        $run_transaction = mysqli_query($con,$get_transaction);
+        
+                                        while($row_transaction=mysqli_fetch_array($run_transaction)){
+                            
+                                        $transaction_id = $row_transaction['transaction_id'];
+                        
+                                        $payable = $row_transaction['payable'];
+                        
+                                        $pdate = $row_transaction['pdate'];
+                                        $status = $row_transaction['status'];
+                                        $pdate = date('F j, Y', strtotime($pdate));
+                
+                ?>
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction ID</th>
+                                            <th>Payable</th>
+                                            <th>Pay Date</th>
+                                            <th>Status</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td><?php echo $transaction_id?></td>                                      
+                                            <td><?php echo $payable?></td>
+                                            <td><?php echo $pdate?></td>
+                                            <td><?php echo $status?></td>        
+
+
+                                           
+                                            
+                                         
+                                            
+                                        </tr>
+                                    </tbody>
+                                    <?php } ?>
+                                </table>
+                            </form> 
+                        </div><!--/table-resp-->
                     </div><!--/tab-pane-->
+                     
+<!--                     this is for complain-->
+                     <div class="tab-pane" id="complain">
+                        <?php
+                            check_message();
+                              
+                            ?>
+                        <div class="table-responsive" style="margin-top:5%;">
+                            <form action=
+                            "customer/controller.php?action=delete" method=
+                            "post">
+                                <table cellspacing="0" class=
+                                "table table-striped table-bordered table-hover"
+                                id="example" style="font-size:12px">
+                                   
+                                    <?php 
+                
+                                        $get_complain = "select * from complain";
+        
+                                        $run_complain = mysqli_query($con,$get_complain);
+        
+                                        while($row_complain=mysqli_fetch_array($run_complain)){
+                            
+                                        $complain_id = $row_complain['complain_id'];
+                        
+                                        $reason = $row_complain['complaint_reason'];
+                        
+                                        $status = $row_complain['status'];
+                
+                ?>
+                                    <thead>
+                                        <tr>
+                                            <th>Complaint ID</th>
+                                            <th>Reason</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td><?php echo $complain_id?></td>                                      
+                                            <td><?php echo $reason?></td>
+                                            <td><?php echo $status?></td>
+
+
+                                           
+                                            
+                                         
+                                            
+                                        </tr>
+                                    </tbody>
+                                    <?php } ?>
+                                </table>
+                            </form> 
+                        </div><!--/table-resp-->
+                    </div><!--/tab-pane-->
+                      
                 </div><!--/tab-content-->
             </div>
         </div><!--/col-9-->

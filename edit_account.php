@@ -13,7 +13,7 @@
                 "FNAME">First Name:</label>
                   <div class="col-md-8">
                    <input class="form-control input-sm" id="FNAME" name="FNAME" placeholder=
-                      "First Name" type="text" value="<?php echo $res->FNAME; ?>">
+                      "First Name" type="text" value="<?php echo $res->f_name; ?>">
                 </div>
               </div>
             </div>
@@ -27,7 +27,7 @@
 
                 <div class="col-md-8">
                    <input class="form-control input-sm" id="LNAME" name="LNAME" placeholder=
-                      "Last Name" type="text" value="<?php echo $res->LNAME; ?>">
+                      "Last Name" type="text" value="<?php echo $res->l_name; ?>">
                 </div>
               </div>
             </div>
@@ -43,7 +43,7 @@
 
                 <div class="col-md-8">
                    <input class="form-control input-sm" id="CITYADD" name="CITYADD" placeholder=
-                      "Municipality/City Address" type="text" value="<?php echo $res->CITYADD; ?>">
+                      "Municipality/City Address" type="text" value="<?php echo $res->c_address; ?>">
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
 
                   <div class="col-md-8">
                      <input class="form-control input-sm" id="PHONE" name="PHONE" placeholder=
-                        "Contact Number" type="text" value="<?php echo $res->PHONE; ?>">
+                        "Contact Number" type="text" value="<?php echo $res->c_phone; ?>">
                   </div>
                 </div>
               </div> 
@@ -76,7 +76,7 @@
 
                   <div class="col-md-8">
                      <input class="form-control input-sm" id="CUSUNAME" name="CUSUNAME" placeholder=
-                        "Username" type="text" value="<?php echo $res->CUSUNAME; ?>">
+                        "Username" type="text" value="<?php echo $res->u_name; ?>">
                   </div>
                 </div>
               </div> 

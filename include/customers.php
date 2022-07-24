@@ -1,7 +1,7 @@
 <?php
 require_once(LIB_PATH.DS.'database.php');
 class Customer {
-	protected static  $tblname = "tblcustomer";
+	protected static  $tblname = "customer";
 
 	function dbfields () {
 		global $mydb;
@@ -16,7 +16,7 @@ class Customer {
 	function find_customer($id="",$name=""){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE CUSTOMERID = {$id} OR FNAME = '{$name}'");
+			WHERE customer_id = {$id} OR f_name = '{$name}'");
 		$cur = $mydb->executeQuery();
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
@@ -26,14 +26,14 @@ class Customer {
 	function find_all_customer($name=""){
 		global $mydb;
 		$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-			WHERE FNAME = '{$name}'");
+			WHERE f_name = '{$name}'");
 		$cur = $mydb->executeQuery();
 		$row_count = $mydb->num_rows($cur);
 		return $row_count;
 	}
 	static function cusAuthentication($email,$h_pass){
 		global $mydb;
-		$mydb->setQuery("SELECT * FROM  ".self::$tblname."  WHERE `CUSUNAME` = '".$email."' and `CUSPASS` = '". $h_pass ."'");
+		$mydb->setQuery("SELECT * FROM  ".self::$tblname."  WHERE `u_name` = '".$email."' and `c_pass` = '". $h_pass ."'");
 		$cur = $mydb->executeQuery();
 		if($cur==false){
 			die(mysql_error());
@@ -41,10 +41,10 @@ class Customer {
 		$row_count = $mydb->num_rows($cur);//get the number of count
 		 if ($row_count == 1){
 		 $user_found = $mydb->loadSingleResult();
-		 	$_SESSION['CUSID']   		= $user_found->CUSTOMERID;
-		 	$_SESSION['CUSNAME']      	= $user_found->FNAME . ' ' .$user_found->LNAME;
-		 	$_SESSION['CUSUNAME'] 		= $user_found->CUSUNAME; 
-		 	$_SESSION['CUSUPASS'] 		= $user_found->CUSPASS; 
+		 	$_SESSION['CUSID']   		= $user_found->customer_id;
+		 	$_SESSION['CUSNAME']      	= $user_found->f_name . ' ' .$user_found->l_name;
+		 	$_SESSION['CUSUNAME'] 		= $user_found->u_name; 
+		 	$_SESSION['CUSUPASS'] 		= $user_found->c_pass; 
 		   return true;
 		 }else{
 		 	return false;
@@ -55,14 +55,14 @@ class Customer {
 	function single_customer($id=""){
 			global $mydb;
 			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-				Where CUSTOMERID= {$id} LIMIT 1");
+				Where customer_id= {$id} LIMIT 1");
 			$cur = $mydb->loadSingleResult();
 			return $cur;
 	}
 	function find_phone($phone=""){
 			global $mydb;
 			$mydb->setQuery("SELECT * FROM ".self::$tblname." 
-				Where PHONE= {$phone} LIMIT 1");
+				Where c_phone= {$phone} LIMIT 1");
 			$cur = $mydb->loadSingleResult();
 			return $cur;
 	}
@@ -147,7 +147,7 @@ class Customer {
 		}
 		$sql = "UPDATE ".self::$tblname." SET ";
 		$sql .= join(", ", $attribute_pairs);
-		$sql .= " WHERE CUSTOMERID=". $id;
+		$sql .= " WHERE customer_id=". $id;
 	  $mydb->setQuery($sql);
 	 	if(!$mydb->executeQuery()) return false; 	
 		
@@ -156,7 +156,7 @@ class Customer {
 	public function delete($id=0) {
 		global $mydb;
 		  $sql = "DELETE FROM ".self::$tblname;
-		  $sql .= " WHERE CUSTOMERID=". $id;
+		  $sql .= " WHERE customer_id=". $id;
 		  $sql .= " LIMIT 1 ";
 		  $mydb->setQuery($sql);
 		  

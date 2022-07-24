@@ -1,33 +1,6 @@
  <!-- sign up modal -->
  <div class="modal fade" id="smyModal" tabindex="-1">
  
-<!-- auto city script-->
- 
-<script>	
-window.onload = function() {	
-
-	// ---------------
-	// basic usage
-	// ---------------
-	var $ = new City();
-	$.showProvinces("#province");
-	$.showCities("#city");
-
-	// ------------------
-	// additional methods 
-	// -------------------
-
-	// will return all provinces 
-	console.log($.getProvinces());
-	
-	// will return all cities 
-	console.log($.getAllCities());
-	
-	// will return all cities under specific province (e.g Batangas)
-	console.log($.getCities("Batangas"));	
-	
-}
-</script>
  
  
  <div class="modal-dialog" >
@@ -104,6 +77,10 @@ window.onload = function() {
                     </div> 
                   </div>
                   <!-- end login panel -->
+                  
+                  
+                  
+                  
 
                   <!-- sign in panel -->
                   <div class="tab-pane fade" id="profile">
@@ -122,7 +99,7 @@ window.onload = function() {
                                           "FNAME">First Name:</label>
                                           <!-- <input  id="CUSTOMERID" name="CUSTOMERID"  type="HIDDEN" value="<?php echo $res->AUTO; ?>">  -->
                                           <div class="col-md-8">
-                                             <input class="form-control input-sm" id="FNAME" name="FNAME" placeholder=
+                                             <input class="form-control input-sm" id="f_name" name="f_name" placeholder=
                                                 "First Name" type="text" value="">
                                           </div>
                                         </div>
@@ -134,66 +111,20 @@ window.onload = function() {
                                           "LNAME">Last Name:</label>
 
                                           <div class="col-md-8">
-                                             <input class="form-control input-sm" id="LNAME" name="LNAME" placeholder=
+                                             <input class="form-control input-sm" id="l_name" name="l_name" placeholder=
                                                 "Last Name" type="text" value="">
                                           </div>
                                         </div>
                                       </div>
 
-                                       <div class="form-group">
-                                        <div class="col-md-10">
-                                          <label class="col-md-4 control-label" for=
-                                          "GENDER">Gender:</label>
-
-                                          <div class="col-md-8">
-                                            <input  id="GENDER" name="GENDER" placeholder=
-                                                "Gender" type="radio" checked="true" value="Male"><b> Male </b>
-                                                <input   id="GENDER" name="GENDER" placeholder=
-                                                "Gender" type="radio" value="Female"> <b> Female </b>
-                                          </div>
-                                        </div>
-                                      </div>
-
-<!--
-                                       <div class="form-group">
-                                            <div class="col-md-10">
-                                              <label class="col-md-4 control-label" for=
-                                              "CITYADD">Municipality/City:</label>
-
-                                              <div class="col-md-8">
-                                                 <input class="form-control input-sm" id="CITYADD" name="CITYADD" placeholder=
-                                                    "Municipality/City Address" type="text" value="">
-                                              </div>
-                                            </div>
-                                          </div>
-                                          
+                                       
                                           
 -->
 
-                                    <div class="form-group">
-                                        <div class="col-md-10">
-                                          <label class="col-md-4 control-label" for=
-                                          "PROVINCE">Province:</label>
-
-                                          <div class="col-md-8">
-                                            <select id="province" class="form-control" name="province" required ></select>	
-                                          </div>
-                                        </div>
-                                      </div>
                                       <div class="form-group">
                                         <div class="col-md-10">
                                           <label class="col-md-4 control-label" for=
-                                          "CITY">City:</label>
-
-                                          <div class="col-md-8">
-                                            <select id="city" class="form-control" name="c_city" required></select>	
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <div class="col-md-10">
-                                          <label class="col-md-4 control-label" for=
-                                          "STREET">Street:</label>
+                                          "Address">Address:</label>
 
                                           <div class="col-md-8">
                                             <input type="text" class="form-control" name="c_address" required placeholder="Street no., Street name">

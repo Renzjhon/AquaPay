@@ -51,20 +51,15 @@ if(isset($_POST['sidebarLogin'])){
         $cusres = $cus::cusAuthentication($email,$h_upass);
 
         if ($cusres==true){
+            
+            echo "<script>alert('Login Successfully')</script>";
 
-           if($_POST['proid']==''){
+         
             redirect(web_root."index.php?q=profile");
-           }else{
-              $proid = $_POST['proid'];
-              $id = mysql_insert_id(); 
-              $query ="INSERT INTO `tblwishlist` (`PROID`, `CUSID`, `WISHDATE`, `WISHSTATS`)  VALUES ('". $proid."','".$_SESSION['CUSID']."','".DATE('Y-m-d')."',0)";
-              mysql_query($query) or die(mysql_error());
-              redirect(web_root."index.php?q=profile");
-             }
 
          
         }else{
-             message("Invalid Username and Password! Please contact administrator", "error");
+              echo "<script>alert('Your email or password is wrong')</script>";
              redirect(web_root."index.php");
         }
  
